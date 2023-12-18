@@ -13,29 +13,35 @@ Reproduire la (célèbre) fonction `printf()`, en prenant en compte les conversi
 `%X` : Imprimer un nombre en format hexadécimal en lettres majuscules (base 16). <br>
 `%%` : Imprimer un signe de pourcentage. <br>
 
+<br>
+
 ## Protoype
 
 **```int ft_printf(const char *format, ...)```**
 
 Le programme ft_printf est une implémentation simplifiée de la fonction printf en langage C. Il permet d’afficher du texte formaté en utilisant divers spécificateurs de format, tels que %d, %s, %c, et d’autres. Cette documentation vous expliquera comment utiliser et comprendre le fonctionnement de ft_printf.
 
-Fonctions principales
+<br>
+
+#### Fonctions principales
 
 Le programme ft_printf est composé de plusieurs fonctions, dont voici les principales :
 
-int ft_printf(const char *origin, ...)
+```int ft_printf(const char *format, ...)```
 
 Cette fonction principale est l’équivalent de la fonction printf. Elle prend une chaîne de format en premier argument (comme "Hello, %s!") et des arguments supplémentaires en fonction des spécificateurs de format dans la chaîne. Elle renvoie le nombre de caractères écrits.
 
-int ft_check(char c, va_list args, int count)
+```static void check_next(char c, va_list args, int *count)```
 
 Cette fonction est utilisée pour gérer les spécificateurs de format individuels. Elle prend en charge les spécificateurs de format tels que %c, %s, %d, %i, %u, %x, %X, et %p. Elle renvoie le nombre de caractères écrits pour ce spécificateur.
 
-Fonctions auxiliaires
+#### Fonctions auxiliaires
 
-Le programme ft_printf utilise également plusieurs fonctions auxiliaires pour accomplir sa tâche, telles que print_c, print_s, print_nb, print_base, et print_base2. Elles sont utilisées pour l’affichage de caractères, de chaînes, de nombres et de bases différentes.
+Le programme ft_printf utilise également plusieurs fonctions auxiliaires pour accomplir sa tâche, telles que print_c, print_s, print_p et print_n. Elles sont utilisées pour l’affichage de caractères, de chaînes, de nombres, de pointeurs et de bases différentes.
 
-Comment ça fonctionne
+<br>
+
+#### Comment ça fonctionne
 
 	1.	Lorsque vous appelez ft_printf avec une chaîne de format, il parcourt la chaîne caractère par caractère.
 	2.	Lorsqu’il rencontre un caractère %, il analyse le caractère suivant pour déterminer le spécificateur de format.
