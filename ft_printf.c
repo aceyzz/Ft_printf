@@ -5,57 +5,53 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cedmulle <cedmulle@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 10:16:55 by cedmulle          #+#    #+#             */
-/*   Updated: 2023/11/04 09:29:46 by cedmulle         ###   ########.fr       */
+/*   Created: 2023/12/13 15:20:33 by cedmulle          #+#    #+#             */
+/*   Updated: 2023/12/18 13:36:03 by cedmulle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_check(char c, va_list args, int count)
+static void	check_next(char c, va_list args, int *count)
 {
 	if (c == 'c')
-		count += print_c(va_arg(args, int));
+		print_c(va_arg(args, int), count);
 	else if (c == 's')
-		count += print_s(va_arg(args, char *));
+		print_s(va_arg(args, char *), count);
 	else if (c == 'p')
 	{
-		count += write(1, "0x", 2);
-		count += print_base(va_arg(args, size_t), 16);
+		(*count) += write(1, "0x", 2);
+		print_p(va_arg(args, size_t), 16, count);
 	}
 	else if (c == 'd' || c == 'i')
-		count += print_nb(va_arg(args, int));
+		print_n((long long int)va_arg(args, int), 10, count, 0);
 	else if (c == 'u')
-		count += print_base(va_arg(args, unsigned int), 10);
+		print_n((long long int)va_arg(args, unsigned int), 10, count, 0);
 	else if (c == 'x')
-		count += print_base(va_arg(args, unsigned int), 16);
+		print_n((long long int)va_arg(args, unsigned int), 16, count, 0);
 	else if (c == 'X')
-		count += print_base2(va_arg(args, unsigned int), 16);
+		print_n((long long int)va_arg(args, unsigned int), 16, count, 1);
 	else if (c == '%')
-		count += print_s("%");
-	return (count);
+		print_s("%", count);
 }
 
-int	ft_printf(const char *origin, ...)
+int	ft_printf(const char *format, ...)
 {
 	va_list	args;
-	size_t	i;
-	int		writed;
+	int		i;
+	int		count;
 
 	i = 0;
-	writed = 0;
-	va_start(args, origin);
-	while (origin[i])
+	count = 0;
+	va_start(args, format);
+	while (format[i])
 	{
-		if (origin[i] == '%')
-			writed = ft_check(origin[++i], args, writed);
+		if (format[i] == '%')
+			check_next(format[++i], args, &count);
 		else
-		{
-			write(1, &origin[i], 1);
-			writed++;
-		}
+			count += write(1, &format[i], 1);
 		i++;
 	}
 	va_end(args);
-	return (writed);
+	return (count);
 }

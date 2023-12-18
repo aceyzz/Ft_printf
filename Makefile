@@ -5,41 +5,45 @@
 #                                                     +:+ +:+         +:+      #
 #    By: cedmulle <cedmulle@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/03 13:34:59 by cedmulle          #+#    #+#              #
-#    Updated: 2023/11/04 09:22:33 by cedmulle         ###   ########.fr        #
+#    Created: 2023/12/13 15:44:46 by cedmulle          #+#    #+#              #
+#    Updated: 2023/12/18 14:11:16 by cedmulle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # ---------------------------------------------------------------------------- #
 # 								Variables									   #
 # ---------------------------------------------------------------------------- #
-SRC		= ft_printf.c print_first.c print_second.c
-OBJ		= ${SRC:.c=.o}
-
+NAME	= libftprintf.a
+SRC		= ft_printf.c ft_printf_utils.c
+OBJDIR	= obj/
+OBJ		= $(patsubst %.c,$(OBJDIR)%.o,$(SRC))
 CFLAGS	= -Wall -Werror -Wextra
 HEAD	= ft_printf.h
 CC		= gcc
 AR		= ar rcs
-RM		= rm -f
-NAME	= libftprintf.a
+RM		= rm -rf
 # ---------------------------------------------------------------------------- #
 # 									Regles								       #
 # ---------------------------------------------------------------------------- #
-all:		${NAME}
+all:			${NAME}
 
-${NAME}:	${OBJ}
-	@${AR} ${NAME} ${OBJ}
-	@echo "Compilation successful."
+${NAME}:		${OBJ}
+			@${AR} ${NAME} ${OBJ}
+			@echo "\033[1;36mCompilation successful.\033[0m"
 
-%.o:		%.c ${HEAD}
-	@${CC} ${CFLAGS} -c $< -o $@
+$(OBJDIR)%.o:	%.c ${HEAD}
+			@mkdir -p $(@D)
+			@${CC} ${CFLAGS} -c $< -o $@
 
 clean:
-	@${RM} ${OBJ} ${OBJB}
-	@echo "Objects files deleted."
+			@${RM} ${OBJDIR}
+			@echo "\033[1;35mObjects files deleted.\033[0m"
 
-fclean:		clean
-	@${RM} ${NAME}
-	@echo "${NAME} deleted."
+fclean:			clean
+			@${RM} ${NAME}
+			@echo "\033[1;35m${NAME} deleted.\033[0m"
 
-re:			fclean all
+re:				fclean all
+
+norme:
+			@norminette
