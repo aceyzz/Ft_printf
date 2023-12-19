@@ -1,4 +1,5 @@
-<img src="utils/FT_PRINTF.png" alt="logo_ft-printf" style="width: 100%">
+<img src="utils/printf_banner.png" alt="logo_ft-printf" style="width: 100%">
+<img src="utils/printf_logo.png" alt="logo_ft-printf" style="width: 100%">
 
 # Sujet
 Reproduire la (célèbre) fonction `printf()`, en prenant en compte les conversions suivantes :
