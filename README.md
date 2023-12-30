@@ -57,3 +57,6 @@ Le programme ft_printf utilise également plusieurs fonctions auxiliaires pour a
 |:----------------------:|:-----------------------:|
 | ![](./utils/grade.png) | ![](./utils/detail.png) |
 
+
+## Licence
+[Licence](./LICENSE)
