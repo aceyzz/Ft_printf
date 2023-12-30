@@ -59,4 +59,4 @@ Le programme ft_printf utilise également plusieurs fonctions auxiliaires pour a
 
 
 ## Licence
-[Licence](./LICENSE)
+This work is published under the terms of **[42 Unlicense](./LICENSE)**.
