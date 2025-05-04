@@ -1,7 +1,15 @@
-<img src="utils/printf_banner.png" alt="logo_ft-printf" style="width: 100%">
-<img src="utils/printf_logo.png" alt="logo_ft-printf" style="width: 100%">
+<img src="git_utils/banner.png" alt="logo_ft-printf" style="width: 100%">
 
-[ENGLISH VERSION](#english-version)
+<br>
+
+---
+
+<br>
+
+<details>
+<summary>FRENCH VERSION</summary>
+
+<br>
 
 # Sujet
 Reproduire la (célèbre) fonction `printf()`, en prenant en compte les conversions suivantes :
@@ -57,11 +65,20 @@ Le programme ft_printf utilise également plusieurs fonctions auxiliaires pour a
 ## Résultat de Moulinette
 |          Note          |          Tests          |
 |:----------------------:|:-----------------------:|
-| ![](./utils/grade.png) | ![](./utils/detail.png) |
+| ![](./git_utils/grade.png) | ![](./git_utils/detail.png) |
+
+</details>
+
+<br>
 
 ---
 
-# ENGLISH VERSION
+<br>
+
+<details>
+<summary>ENGLISH VERSION</summary>
+
+<br>
 
 # Topic
 Reproduce the (famous) `printf()` function, taking into account the following conversions:
@@ -117,8 +134,10 @@ The ft_printf program also utilizes several auxiliary functions to accomplish it
 ## Moulinette Result
 |          Grade          |          Tests          |
 |:----------------------:|:-----------------------:|
-| ![](./utils/grade.png) | ![](./utils/detail.png) |
+| ![](./git_utils/grade.png) | ![](./git_utils/detail.png) |
 
 
 ## Licence
 This work is published under the terms of **[42 Unlicense](./LICENSE)**.
+
+</details>
